@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux'
 import reducer from './reducers'
 
+// takes reducer and returns a new store object
 const store = createStore(
   reducer,
   /*
@@ -19,5 +20,5 @@ const store = createStore(
 console.log(store)
 console.log(store.getState())
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App store={store}/>, document.getElementById('root'));
 registerServiceWorker();
