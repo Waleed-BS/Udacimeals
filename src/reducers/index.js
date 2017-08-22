@@ -40,6 +40,7 @@ const initialCalendarState = {
     dinner: null,
   },
 
+  // reducer function
   function calendar (state = initialCalendarState, action) {
     const { day, recipe, meal } = action
 
