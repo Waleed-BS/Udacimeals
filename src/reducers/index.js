@@ -39,31 +39,31 @@ const initialCalendarState = {
     lunch: null,
     dinner: null,
   },
+}
+// reducer function
+function calendar (state = initialCalendarState, action) {
+  const { day, recipe, meal } = action
 
-  // reducer function
-  function calendar (state = initialCalendarState, action) {
-    const { day, recipe, meal } = action
-
-    switch (action.type) {
-      case ADD_RECIPE:
-        return {
-          ...state,
-          [day]: {
-            ...state[day],
-            [meal]: recipe.label,
-          }
-        }
-      case REMOVE_FROM_CALENDAR:
-        return {
-          ...state,
-          [day]: {
-            ...state[day],
-            [meal]: null,
-          }
-        }
-
+  switch (action.type) {
+    case ADD_RECIPE:
+    return {
+      ...state,
+      [day]: {
+        ...state[day],
+        [meal]: recipe.label,
+      }
+    }
+    case REMOVE_FROM_CALENDAR:
+    return {
+      ...state,
+      [day]: {
+        ...state[day],
+        [meal]: null,
+      }
     }
 
+    default:
+      return state
   }
 
 }
