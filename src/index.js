@@ -5,6 +5,7 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux'
 import reducer from './reducers'
+import { Provider } from 'react-redux'
 
 // takes reducer and returns a new store object
 // The state of Redux is stored in the Store.
@@ -27,6 +28,11 @@ console.log(store)
 console.log("store.getState()")
 console.log(store.getState())
 
+ReactDOM.render(
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  document.getElementById('root')
+);
 
-ReactDOM.render(<App store={store}/>, document.getElementById('root'));
 registerServiceWorker();
