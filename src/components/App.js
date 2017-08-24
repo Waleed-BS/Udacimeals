@@ -8,17 +8,27 @@ class App extends Component {
 
   componentDidMount () {
     const { store } =  this.props
-
-    store. subscribe(() => {
+    /*
+    "store.subscribe(callback)"
+    takes in a listener callback function
+    that will be invoked whenever the state of the store changes.
+    */
+    store.subscribe(() => {
       this.setState(() => ({
         calendar: store.getState()
-
       }))
     })
   }
 
   submitFood = () => {
-    this.props.store.dispatch(addRecipe({
+    const { store } = this.props
+    /*
+    "store.dispatch(action)""
+    takes in an action object and will call the reducer function,
+    passing it the current state and the action which was
+    dispatched.
+    */
+    store.dispatch(addRecipe({
       day: 'monday',
       meal: 'breakfast',
       recipe: {

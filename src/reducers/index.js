@@ -40,7 +40,15 @@ const initialCalendarState = {
     dinner: null,
   },
 }
+
 // reducer function
+
+/*
+responsible for deciding the shape and the initial state of the
+store and when an action is dispatched, the state it
+returns will become the new state of the store.
+*/
+
 function calendar (state = initialCalendarState, action) {
   const { day, recipe, meal } = action
 
@@ -63,7 +71,7 @@ function calendar (state = initialCalendarState, action) {
     }
 
     default:
-      return state
+    return state
   }
 
 }
