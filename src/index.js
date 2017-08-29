@@ -23,10 +23,8 @@ const store = createStore(
 The store can be used to dispatch actions,
 get the current state of the store, and subscribe to any changes.
 */
-console.log("store")
-console.log(store)
-console.log("store.getState()")
-console.log(store.getState())
+console.log("store in src/index.js", store)
+console.log("store.getState() in src/index.js", store.getState())
 
 ReactDOM.render(
   <Provider store={store}>

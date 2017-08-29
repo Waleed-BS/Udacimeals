@@ -17,21 +17,24 @@ class App extends Component {
 /*
 takes in the state as an aurgment and maps it to be a usable prop
 */
-function mapStateToProps(calendar) {
+function mapStateToProps({ calendar, food }) {
   const dayOrder = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
   return {
     calendar: dayOrder.map((day) => ({
       day,
       meals: Object.keys(calendar[day]).reduce((meals, meal) => {
         meals[meal] = calendar[day][meal]
-        ? calendar[day][meal]
+        ? food[calendar[day][meal]] // food item rather than just ID
         : null
-
+        // console.log("day =", day)
+        // console.log("meal =", meal)
+        // console.log("meals =", meals)
         return meals
-
       }, {})
     }))
   }
+
 }
 
 function mapDispatchToProps(dispatch) {
@@ -43,7 +46,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 /*
-to dispatch an action inside this component,
+connect() connects a React component to the Redux store.
+To dispatch an action inside this component,
 connect that component to be able to call dispatch
 */
 export default connect(mapStateToProps, mapDispatchToProps)(App);
